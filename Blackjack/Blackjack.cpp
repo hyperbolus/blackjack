@@ -8,9 +8,11 @@
 #undef max
 #include "argparse.h"
 
+using namespace std::string_literals;
+
 int main(int argc, char* argv[])
 {
-	argparse::ArgumentParser program("Blackjack", "1.0.0");
+	argparse::ArgumentParser program("Blackjack", "1.1.0");
 
 	program.add_argument("executable")
 		.help("The executable you wish to launch");
@@ -30,6 +32,10 @@ int main(int argc, char* argv[])
 	program.add_argument("-l", "--dll")
 		.append()
 		.help("DLL file to be injected (multiple)");
+
+	program.add_argument("-e", "--env")
+		.append()
+		.help("Start proccess with environment variable (multiple)");
 
 	try {
 		program.parse_args(argc, argv);
@@ -58,13 +64,23 @@ int main(int argc, char* argv[])
 	
 	auto _dlls = program.get<std::vector<std::string>>("--dll");
 	std::vector<LPCSTR> dlls;
-
-	for (auto& dll : _dlls)
+	for (auto& _dll : _dlls)
 	{
-		dlls.push_back(dll.c_str());
+		dlls.push_back(_dll.c_str());
+	}
+
+	std::string env;
+	auto _env = program.present<std::vector<std::string>>("--env");
+	if (_env) {
+		for (auto& _v : *_env)
+		{
+			env.append(_v);
+			env.append("\0"s);
+		}
 	}
 
 	std::cout << "Executable: " << exe.c_str() << std::endl;
+	std::cout << "Environment Variables:  " << env << std::endl;
 
 	// CreateProccess boilerplate
 	STARTUPINFO si;
@@ -81,7 +97,7 @@ int main(int argc, char* argv[])
 	auto detour = DetourCreateProcessWithDlls(exe.c_str(), NULL, NULL, NULL, TRUE,
 		//CREATE_DEFAULT_ERROR_MODE,
 		CREATE_SUSPENDED,
-		NULL, NULL, &si, &pi, dlls.size(), &dlls[0], NULL);
+		_env ? LPTSTR(env.c_str()) : NULL, directory.c_str(), &si, &pi, dlls.size(), &dlls[0], NULL);
 
 	if (detour) {
 		std::cout << "Success" << std::endl;
