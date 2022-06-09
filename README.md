@@ -22,6 +22,7 @@ Optional arguments:
 -d --working-dir        Set the working directory to launch
 -l --dll                DLL file to be injected (multiple)
 ```
-
+## Note about 32 bit vs 64 bit
+Make sure that the executable and the DLLs you load have the same bitness!
 # License
 Blackjack is released under the MIT License
