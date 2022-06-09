@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="logo" src="https://raw.github.com/hyperbolus/blackjack/master/blackjack.svg">
+    <img alt="logo" height="300" src="https://raw.github.com/hyperbolus/blackjack/master/blackjack.svg">
 </p>
 <p align="center">
 <img alt="license" src="https://img.shields.io/github/license/hyperbolus/blackjack">
