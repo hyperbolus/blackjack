@@ -9,7 +9,7 @@
 
 # Usage
 Grab a build from the Releases section or compile with Visual Studio
-```shell
+```
 Usage: Blackjack [options] executable
 
 Positional arguments:
