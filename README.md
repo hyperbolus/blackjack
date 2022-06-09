@@ -3,7 +3,7 @@
 </p>
 <p align="center">
 <img alt="license" src="https://img.shields.io/github/license/hyperbolus/blackjack">
-<img alt="version" src="https://img.shields.io/badge/version-v1.0.0-brightgreen">
+<img alt="version" src="https://img.shields.io/badge/version-v1.1.0-brightgreen">
 <img alt="Discord" src="https://img.shields.io/discord/839698528170409996">
 </p>
 
