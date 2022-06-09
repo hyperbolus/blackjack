@@ -21,6 +21,18 @@ Optional arguments:
 -q --quiet              Don't output any messages [default: false]
 -d --working-dir        Set the working directory to launch
 -l --dll                DLL file to be injected (multiple)
+-e --env                Start proccess with environment variable (multiple)
+```
+## Injecting DLLs
+Using the `--dll` or `-l` flag you can create the process with the specified DLL injected. You can use it multiple times.
+```shell
+blackjack prog.exe -l mod-menu.dll -l crash-logger.dll
+```
+
+## Environment Variables
+Using the `--env` or `-e` flag you can create the process with custom environment variables. You can use it multiple times.
+```shell
+blackjack prog.exe -e EDITOR=nano -e SHIRT=cool
 ```
 ## Note about 32 bit vs 64 bit
 Make sure that the executable and the DLLs you load have the same bitness!
