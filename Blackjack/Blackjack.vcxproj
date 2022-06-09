@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{e9810a09-3567-46ef-a9f6-022c51882abf}</ProjectGuid>
-    <RootNamespace>Hookperbolus</RootNamespace>
+    <RootNamespace>Blackjack</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>Blackjack</ProjectName>
   </PropertyGroup>

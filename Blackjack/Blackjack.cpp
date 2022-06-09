@@ -10,7 +10,7 @@
 
 int main(int argc, char* argv[])
 {
-	argparse::ArgumentParser program("Blackjack", "ALPHA");
+	argparse::ArgumentParser program("Blackjack", "1.0.0");
 
 	program.add_argument("executable")
 		.help("The executable you wish to launch");
