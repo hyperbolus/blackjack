@@ -12,7 +12,7 @@ using namespace std::string_literals;
 
 int main(int argc, char* argv[])
 {
-	argparse::ArgumentParser program("Blackjack", "1.1.0");
+	argparse::ArgumentParser program("Blackjack", "1.1.1");
 
 	program.add_argument("executable")
 		.help("The executable you wish to launch");
@@ -60,14 +60,8 @@ int main(int argc, char* argv[])
 			directory = exe.substr(0, last);
 		}
 	}
-	SetCurrentDirectory(directory.c_str());
-	
-	auto _dlls = program.get<std::vector<std::string>>("--dll");
-	std::vector<LPCSTR> dlls;
-	for (auto& _dll : _dlls)
-	{
-		dlls.push_back(_dll.c_str());
-	}
+
+	std::cout << "Executable: " << exe.c_str() << std::endl;
 
 	std::string env;
 	auto _env = program.present<std::vector<std::string>>("--env");
@@ -79,8 +73,21 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	std::cout << "Executable: " << exe.c_str() << std::endl;
 	std::cout << "Environment Variables:  " << env << std::endl;
+	
+	auto _dlls = program.present<std::vector<std::string>>("--dll");
+	std::vector<LPCSTR> dlls;
+	if (_dlls) {
+		for (auto& _dll : *_dlls)
+		{
+			std::cout << "Injecting " << _dll << std::endl;
+			dlls.push_back(_dll.c_str());
+		}
+	}
+
+	SetCurrentDirectory(directory.c_str());
+
+	std::cout << "DLLs Loaded: " << dlls.size() << std::endl;
 
 	// CreateProccess boilerplate
 	STARTUPINFO si;
