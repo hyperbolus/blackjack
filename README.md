@@ -3,7 +3,7 @@
 </p>
 <p align="center">
 <img alt="license" src="https://img.shields.io/github/license/hyperbolus/blackjack">
-<img alt="version" src="https://img.shields.io/badge/version-v1.1.0-brightgreen">
+<img alt="version" src="https://img.shields.io/badge/version-v1.1.1-brightgreen">
 <img alt="Discord" src="https://img.shields.io/discord/839698528170409996">
 </p>
 
@@ -35,6 +35,6 @@ Using the `--env` or `-e` flag you can create the process with custom environmen
 blackjack prog.exe -e EDITOR=nano -e SHIRT=cool
 ```
 ## Note about 32 bit vs 64 bit
-Make sure that the executable and the DLLs you load have the same bitness!
+Make sure that the executable and the DLLs you load have the same bitness. ALSO make sure the version of Blackjack you use ALSO has the same bitness as the executable you wish to launch and DLLs you wish to inject. It *may* start, but **the DLLs will not inject!**
 # License
 Blackjack is released under the MIT License
